@@ -1,0 +1,16 @@
+.logo {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 6px;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.logo__main {
+  font-size: 20px;
+}
+.logo__sub {
+  font-size: 11px;
+  color: #f39a2b;
+} /* оранжевый "GALLERY" */
