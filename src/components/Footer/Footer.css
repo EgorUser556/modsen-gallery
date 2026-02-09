@@ -1,11 +1,11 @@
 .footer {
-  background: rgb(53, 52, 52);
-  color: #eaeaea;
-  padding: 32px 24px 18px;
+  background: var(--color-footer-bg);
+  color: var(--color-text-muted);
+  padding: 32px var(--page-padding-x) 18px;
 }
 
 .footer__inner {
-  max-width: 980px;
+  max-width: var(--container-width);
   margin: 0 auto;
   display: grid;
   grid-template-columns: 1.2fr 2fr;
@@ -23,6 +23,7 @@
 .footer__logoMain {
   font-size: 22px;
 }
+
 .footer__logoSub {
   font-size: 12px;
   opacity: 0.9;
@@ -30,7 +31,7 @@
 
 .footer__text {
   margin: 14px 0 18px;
-  color: #cfcfcf;
+  color: var(--color-text-subtle);
   font-size: 12px;
   line-height: 1.45;
   max-width: 260px;
@@ -45,13 +46,13 @@
   width: 26px;
   height: 26px;
   border-radius: 50%;
-  background: #3b3b3b;
+  background: var(--color-footer-social-bg);
   display: inline-block;
   text-decoration: none;
 }
 
 .footer__socialBtn:hover {
-  background: #f39a2b;
+  background: var(--color-footer-social-bg-hover);
   cursor: pointer;
 }
 
@@ -64,7 +65,7 @@
 .footer__colTitle {
   font-size: 12px;
   letter-spacing: 0.1em;
-  color: #f0c27c;
+  color: var(--color-footer-section-title);
   margin-bottom: 10px;
 }
 
@@ -74,39 +75,57 @@
 }
 
 .footer__link {
-  color: #cfcfcf;
+  color: var(--color-footer-link);
   text-decoration: none;
   font-size: 12px;
 }
 
 .footer__link:hover {
-  color: #ffffff;
+  color: var(--color-footer-link-hover);
   text-decoration: underline;
   cursor: pointer;
 }
 
 .footer__bottom {
-  max-width: 980px;
+  max-width: var(--container-width);
   margin: 20px auto 0;
   padding-top: 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
-  color: #a9a9a9;
+  border-top: 1px solid var(--color-footer-border);
+  color: var(--color-text-soft);
   font-size: 11px;
 }
 
 @media (max-width: 390px) {
+  .footer {
+    padding: 24px var(--page-padding-x-mobile) 16px;
+  }
+
   .footer__inner {
     grid-template-columns: 1fr;
-    gap: 22px;
+    gap: 16px;
   }
+
   .footer__cols {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 14px;
+    grid-template-columns: 1fr;
+    gap: 12px;
   }
-  .footer__colTitle {
+
+  .footer__link {
     font-size: 10px;
   }
-  .footer__link {
+
+  .footer__colList {
+    display: none;
+  }
+
+  .footer__colTitle {
+    margin-bottom: 0;
+    font-size: 12px;
+    letter-spacing: 0.12em;
+  }
+
+  .footer__bottom {
+    margin-top: 14px;
     font-size: 10px;
   }
 }

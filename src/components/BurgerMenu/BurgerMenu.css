@@ -1,0 +1,52 @@
+/* контейнер меню сразу под шапкой, поверх hero */
+.burgerMenu {
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 56px; /* высота header */
+  z-index: 60;
+  pointer-events: none;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 200ms ease;
+}
+
+/* на десктопе меню всегда скрыто */
+@media (min-width: 391px) {
+  .burgerMenu {
+    display: none;
+  }
+}
+
+.burgerMenu--open {
+  pointer-events: auto;
+  max-height: 400px; /* достаточно, чтобы вместить пункты и соцсети */
+}
+
+.burgerMenu__content {
+  background: rgb(53, 52, 52); /* тот же цвет, что у header */
+  padding: 20px 0 18px;
+  display: grid;
+  gap: 20px;
+}
+
+.burgerMenu__nav {
+  display: grid;
+  gap: 12px;
+  justify-items: center;
+}
+
+.burgerMenu__link {
+  text-decoration: none;
+  font-size: 20px;
+  color: #ffffff;
+}
+
+.burgerMenu__link.is-active {
+  color: #f39a2b;
+}
+
+.burgerMenu__social {
+  display: flex;
+  justify-content: center;
+}

@@ -11,15 +11,14 @@ interface SearchPhotosResponse {
   results: UnsplashPhoto[];
 }
 
-function requireAccessKey() {
+const requireAccessKey = () => {
   if (!ACCESS_KEY) {
     throw new Error('Missing VITE_UNSPLASH_ACCESS_KEY in .env');
   }
-}
+};
 
 export async function searchPhotos(query: string, perPage = 1): Promise<UnsplashPhoto[]> {
   requireAccessKey();
-
   const url = new URL(`${BASE_URL}/search/photos`);
   url.searchParams.set('query', query);
   url.searchParams.set('per_page', String(perPage));
@@ -29,6 +28,6 @@ export async function searchPhotos(query: string, perPage = 1): Promise<Unsplash
   const res = await fetch(url.toString());
   if (!res.ok) throw new Error(`Unsplash error: ${res.status}`);
 
-  const data = (await res.json()) as SearchPhotosResponse;
+  const data: SearchPhotosResponse = await res.json();
   return data.results;
 }

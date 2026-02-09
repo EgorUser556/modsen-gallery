@@ -28,7 +28,7 @@ const CategoryPage = () => {
         const results = await Promise.all(
           base.map(async (c) => {
             const photos = await searchPhotos(c.query, 1);
-            const img = photos[0]?.urls?.small; // без fallback
+            const img = photos[0]?.urls?.small;
             return { title: c.title, query: c.query, imageUrl: img };
           }),
         );

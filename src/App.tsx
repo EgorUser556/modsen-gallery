@@ -11,7 +11,6 @@ const App = () => (
     <Routes>
       <Route element={<Navigate replace to="/category" />} path="/" />
       <Route element={<CategoryPage />} path="/category" />
-      {/* <Route path="/images" element={<ImagesPage />} /> */}
       {/* <Route path="/favourites" element={<FavouritesPage />} /> */}
       {/* <Route path="*" element={<NotFoundPage />} /> */}
     </Routes>

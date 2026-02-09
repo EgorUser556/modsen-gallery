@@ -1,3 +1,28 @@
+:root {
+  --header-height: 56px;
+  --container-width: 980px;
+
+  --page-padding-x: 24px;
+  --page-padding-x-mobile: 14px;
+
+  --radius-pill: 999px;
+
+  --color-header-bg: rgb(53, 52, 52);
+  --color-footer-bg: rgb(53, 52, 52);
+  --color-body-bg: #efefef;
+  --color-text-main: #ffffff;
+  --color-text-muted: #eaeaea;
+  --color-text-subtle: #cfcfcf;
+  --color-text-soft: #a9a9a9;
+  --color-accent: #f39a2b;
+  --color-footer-border: rgba(255, 255, 255, 0.08);
+  --color-footer-social-bg: #3b3b3b;
+  --color-footer-social-bg-hover: #f39a2b;
+  --color-footer-link: #cfcfcf;
+  --color-footer-link-hover: #ffffff;
+  --color-footer-section-title: #f0c27c;
+}
+
 * {
   box-sizing: border-box;
 }

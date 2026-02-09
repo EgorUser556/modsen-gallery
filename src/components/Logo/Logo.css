@@ -12,5 +12,5 @@
 }
 .logo__sub {
   font-size: 11px;
-  color: #f39a2b;
-} /* оранжевый "GALLERY" */
+  color: var(--color-accent);
+}

@@ -2,6 +2,7 @@ import './Footer.css';
 
 import columns from '../../constants/footer';
 import Logo from '../Logo/Logo';
+import SocialLinks from '../SocialLinks/SocialLinks';
 
 const Footer = () => (
   <footer className="footer">
@@ -12,19 +13,7 @@ const Footer = () => (
           We have images that capture every mood and inspire every vision. From breathtaking
           landscapes to vibrant portraits.
         </p>
-
-        <div className="footer__social">
-          {['fb', 'ig', 'x', 'yt'].map((k) => (
-            <button
-              key={k}
-              aria-label={k}
-              className="footer__socialBtn"
-              onClick={() => {}}
-              title={k}
-              type="button"
-            />
-          ))}
-        </div>
+        <SocialLinks className="footer__social" />
       </div>
 
       <div className="footer__cols">
