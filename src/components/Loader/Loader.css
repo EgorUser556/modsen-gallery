@@ -1,0 +1,20 @@
+.images-loader {
+  display: grid;
+  place-items: center;
+  padding: 40px 0;
+}
+
+.images-loader__spinner {
+  width: 40px;
+  height: 40px;
+  border-radius: 999px;
+  border: 3px solid #ddd;
+  border-top-color: #f39a2b;
+  animation: images-spinner 0.8s linear infinite;
+}
+
+@keyframes images-spinner {
+  to {
+    transform: rotate(360deg);
+  }
+}
