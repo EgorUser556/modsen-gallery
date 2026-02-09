@@ -1,20 +1,15 @@
 import './CategoryPage.css';
 
-import { useEffect, useMemo, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { searchPhotos } from '../../api/unplash';
+import CategoryCard from '../../components/CategoryCard/CategoryCard';
 import CATEGORIES from '../../constants/categories';
-
-interface CategoryCardModel {
-  title: string;
-  query: string;
-  imageUrl?: string;
-}
+import type { CategoryCardModel } from '../../types/CategoryCardType';
 
 const CategoryPage = () => {
   const navigate = useNavigate();
-  const base = useMemo(() => CATEGORIES, []);
   const [cards, setCards] = useState<CategoryCardModel[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -26,28 +21,47 @@ const CategoryPage = () => {
 
       try {
         const results = await Promise.all(
-          base.map(async (c) => {
-            const photos = await searchPhotos(c.query, 1);
+          CATEGORIES.map(async (category) => {
+            const photos = await searchPhotos(category.query, 1);
             const img = photos[0]?.urls?.small;
-            return { title: c.title, query: c.query, imageUrl: img };
+
+            return {
+              title: category.title,
+              query: category.query,
+              imageUrl: img,
+            };
           }),
         );
 
-        if (!cancelled) setCards(results);
+        if (!cancelled) {
+          setCards(results);
+        }
       } catch {
         if (!cancelled) {
-          setCards(base.map((c) => ({ title: c.title, query: c.query })));
+          setCards(
+            CATEGORIES.map((category) => ({
+              title: category.title,
+              query: category.query,
+            })),
+          );
         }
       } finally {
-        if (!cancelled) setLoading(false);
+        if (!cancelled) {
+          setLoading(false);
+        }
       }
     }
 
     load();
+
     return () => {
       cancelled = true;
     };
-  }, [base]);
+  }, []);
+
+  const handleCardClick = (query: string) => {
+    navigate(`/images?query=${encodeURIComponent(query)}`);
+  };
 
   return (
     <main className="category">
@@ -57,35 +71,17 @@ const CategoryPage = () => {
           <span>Images</span> Here!
         </h1>
       </section>
-
       <section className="category__content">
         {loading ? (
           <div className="category__loading">Loading...</div>
         ) : (
           <div className="category__grid">
-            {cards.map((c) => (
-              <button
-                key={c.query}
-                className="categoryCard"
-                onClick={async () => navigate(`/images?query=${encodeURIComponent(c.query)}`)}
-                type="button"
-              >
-                {c.imageUrl ? (
-                  <img
-                    alt={c.title}
-                    className="categoryCard__img"
-                    loading="lazy"
-                    src={c.imageUrl}
-                  />
-                ) : (
-                  <div
-                    aria-hidden="true"
-                    className="categoryCard__img categoryCard__img--placeholder"
-                  />
-                )}
-
-                <div className="categoryCard__label">{c.title}</div>
-              </button>
+            {cards.map((card) => (
+              <CategoryCard
+                key={card.query}
+                card={card}
+                onClick={() => handleCardClick(card.query)}
+              />
             ))}
           </div>
         )}
