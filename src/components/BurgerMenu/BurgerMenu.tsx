@@ -1,8 +1,7 @@
 import './BurgerMenu.css';
 
+import SocialLinks from '@components/SocialLinks/SocialLinks';
 import { NavLink } from 'react-router-dom';
-
-import SocialLinks from '../SocialLinks/SocialLinks';
 
 export interface BurgerMenuLink {
   label: string;

@@ -1,6 +1,6 @@
 import './CategoryCard.css';
 
-import type { CategoryCardProps } from '../../types/CategoryCardType';
+import type { CategoryCardProps } from '@/types/CategoryCardType';
 
 const CategoryCard = ({ card, onClick }: CategoryCardProps) => {
   const { title, imageUrl } = card;

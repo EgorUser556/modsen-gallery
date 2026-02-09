@@ -1,5 +1,7 @@
-import CATEGORIES from '../constants/categories';
-import type { CategoryCardModel } from '../types/CategoryCardType';
+import CATEGORIES from '@constants/categories';
+
+import type { CategoryCardModel } from '@/types/CategoryCardType';
+
 import searchPhotos from './unplash';
 
 export const fetchCategoryCards = async (): Promise<CategoryCardModel[]> =>

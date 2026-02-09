@@ -1,7 +1,7 @@
+import { buildFallbackCategoryCards, fetchCategoryCards } from '@api/categoryApi';
 import { useEffect, useState } from 'react';
 
-import { buildFallbackCategoryCards, fetchCategoryCards } from '../api/categoryApi';
-import type { CategoryCardModel } from '../types/CategoryCardType';
+import type { CategoryCardModel } from '@/types/CategoryCardType';
 
 const useCategoryCards = () => {
   const [cards, setCards] = useState<CategoryCardModel[]>([]);

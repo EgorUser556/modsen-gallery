@@ -1,11 +1,10 @@
 import './Header.css';
 
+import BurgerMenu from '@components/BurgerMenu/BurgerMenu';
+import Logo from '@components/Logo/Logo';
+import LINKS from '@constants/links';
 import { useState } from 'react';
 import { NavLink } from 'react-router-dom';
-
-import LINKS from '../../constants/links';
-import BurgerMenu from '../BurgerMenu/BurgerMenu';
-import Logo from '../Logo/Logo';
 
 const Header = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);

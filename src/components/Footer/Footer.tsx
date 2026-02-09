@@ -1,8 +1,8 @@
 import './Footer.css';
 
-import columns from '../../constants/footer';
-import Logo from '../Logo/Logo';
-import SocialLinks from '../SocialLinks/SocialLinks';
+import Logo from '@components/Logo/Logo';
+import SocialLinks from '@components/SocialLinks/SocialLinks';
+import columns from '@constants/footer';
 
 const Footer = () => (
   <footer className="footer">

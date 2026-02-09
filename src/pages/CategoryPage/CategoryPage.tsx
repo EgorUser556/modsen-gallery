@@ -1,9 +1,8 @@
 import './CategoryPage.css';
 
+import CategoryCard from '@components/CategoryCard/CategoryCard';
+import useCategoryCards from '@hooks/useCategoryCards';
 import { useNavigate } from 'react-router-dom';
-
-import CategoryCard from '../../components/CategoryCard/CategoryCard';
-import useCategoryCards from '../../hooks/useCategoryCards';
 
 const CategoryPage = () => {
   const navigate = useNavigate();
