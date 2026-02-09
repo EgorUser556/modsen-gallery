@@ -17,7 +17,7 @@ const requireAccessKey = () => {
   }
 };
 
-export async function searchPhotos(query: string, perPage = 1): Promise<UnsplashPhoto[]> {
+const searchPhotos = async (query: string, perPage = 1): Promise<UnsplashPhoto[]> => {
   requireAccessKey();
   const url = new URL(`${BASE_URL}/search/photos`);
   url.searchParams.set('query', query);
@@ -30,4 +30,6 @@ export async function searchPhotos(query: string, perPage = 1): Promise<Unsplash
 
   const data: SearchPhotosResponse = await res.json();
   return data.results;
-}
+};
+
+export default searchPhotos;
