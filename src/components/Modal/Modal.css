@@ -1,0 +1,139 @@
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 40;
+}
+
+.modal__dialog {
+  position: relative;
+  max-width: 900px;
+  width: 90%;
+  background: transparent;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.modal__image {
+  display: block;
+  width: 100%;
+  max-height: 70vh;
+  object-fit: cover;
+}
+
+.modal__image--hidden {
+  visibility: hidden;
+}
+
+.modal__bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 18px 24px;
+  background: #ffffff;
+}
+
+.modal__caption {
+  margin: 0;
+  font-size: 14px;
+  color: #111827;
+}
+
+.modal__close {
+  position: absolute;
+  top: 40px;
+  right: 60px;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7) url('@assets/close.svg') center / 14px 14px no-repeat;
+  cursor: pointer;
+  z-index: 41;
+}
+
+.modal__arrow {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: none;
+  background-color: #ff9f1c;
+  cursor: pointer;
+  z-index: 41;
+}
+
+.modal__arrow--left {
+  left: 60px;
+  background-image: url('@assets/arrow-left.svg');
+  background-position: center;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+}
+
+.modal__arrow--right {
+  right: 60px;
+  background-image: url('@assets/arrow-right.svg');
+  background-position: center;
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+}
+
+.modal__loader {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #111;
+  z-index: 1;
+}
+
+@media (max-width: 390px) {
+  .modal__dialog {
+    width: 92%;
+    max-width: 360px;
+    border-radius: 12px;
+  }
+
+  .modal__image {
+    max-height: 260px;
+  }
+
+  .modal__bottom {
+    padding: 12px 16px;
+  }
+
+  .modal__caption {
+    font-size: 13px;
+  }
+
+  .modal__arrow {
+    width: 40px;
+    height: 40px;
+    top: auto;
+    bottom: 24px;
+    transform: none;
+  }
+
+  .modal__arrow--left {
+    left: 50%;
+    transform: translateX(-56px);
+  }
+
+  .modal__arrow--right {
+    right: auto;
+    left: 50%;
+    transform: translateX(16px);
+  }
+
+  .modal__close {
+    top: 18px;
+    right: 18px;
+  }
+}

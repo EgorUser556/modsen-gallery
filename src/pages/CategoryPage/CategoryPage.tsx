@@ -1,6 +1,7 @@
 import './CategoryPage.css';
 
 import CategoryCard from '@components/CategoryCard/CategoryCard';
+import Loader from '@components/Loader/Loader';
 import useCategoryCards from '@hooks/useCategoryCards';
 import { useNavigate } from 'react-router-dom';
 
@@ -20,10 +21,9 @@ const CategoryPage = () => {
           <span>Images</span> Here!
         </h1>
       </section>
-
       <section className="category__content">
         {loading ? (
-          <div className="category__loading">Loading...</div>
+          <Loader />
         ) : (
           <div className="category__grid">
             {cards.map((card) => (

@@ -1,9 +1,9 @@
+import Footer from '@components/Footer/Footer';
+import Header from '@components/Header/Header';
+import CategoryPage from '@pages/CategoryPage/CategoryPage';
+import ImagesPage from '@pages/ImagesPage/ImagesPage';
 import React from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
-
-import Footer from './components/Footer/Footer';
-import Header from './components/Header/Header';
-import CategoryPage from './pages/CategoryPage/CategoryPage';
 
 const App = () => (
   <React.Fragment>
@@ -11,8 +11,7 @@ const App = () => (
     <Routes>
       <Route element={<Navigate replace to="/category" />} path="/" />
       <Route element={<CategoryPage />} path="/category" />
-      {/* <Route path="/favourites" element={<FavouritesPage />} /> */}
-      {/* <Route path="*" element={<NotFoundPage />} /> */}
+      <Route element={<ImagesPage />} path="/images" />
     </Routes>
     <Footer />
   </React.Fragment>

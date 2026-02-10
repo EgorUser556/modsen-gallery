@@ -1,0 +1,17 @@
+.bookmark-button {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  border: none;
+  background: transparent url('@assets/bookmark-outline.svg') center / 40px 40px no-repeat;
+  cursor: pointer;
+  transition: transform 150ms ease;
+}
+
+.bookmark-button:hover {
+  transform: scale(1.05);
+}
+
+.bookmark-button--active {
+  background: transparent url('@assets/bookmark-filled.svg') center / 40px 40px no-repeat;
+}
