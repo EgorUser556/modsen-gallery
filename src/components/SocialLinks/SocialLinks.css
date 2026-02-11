@@ -13,9 +13,29 @@
   height: 26px;
   border-radius: 999px;
   background: #ffffff;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0.9;
+  transform: translateY(0);
+  transition:
+    transform 160ms ease,
+    opacity 160ms ease;
 }
 
 .socialLinks__btn:hover {
-  background: #f39a2b;
+  opacity: 1;
+  transform: translateY(-2px);
+}
+
+.socialLinks__btn:active {
+  opacity: 0.95;
+  transform: translateY(-1px);
+}
+
+.socialLinks__icon {
+  width: 14px;
+  height: 14px;
+  display: block;
+  object-fit: contain;
 }

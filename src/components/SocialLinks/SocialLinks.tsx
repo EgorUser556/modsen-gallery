@@ -1,22 +1,24 @@
 import './SocialLinks.css';
 
+import { SOCIAL } from '@constants/icons.ts';
+
 interface SocialLinksProps {
   className?: string;
 }
 
-const SOCIAL = ['fb', 'ig', 'x', 'yt'] as const;
-
 const SocialLinks = ({ className = '' }: SocialLinksProps) => (
   <div aria-label="Social links" className={`socialLinks ${className}`.trim()}>
-    {SOCIAL.map((k) => (
+    {SOCIAL.map(({ key, icon, label }) => (
       <button
-        key={k}
-        aria-label={k}
+        key={key}
+        aria-label={label}
         className="socialLinks__btn"
         onClick={() => {}}
-        title={k}
+        title={label}
         type="button"
-      />
+      >
+        <img alt="" aria-hidden="true" className="socialLinks__icon" src={icon} />
+      </button>
     ))}
   </div>
 );
