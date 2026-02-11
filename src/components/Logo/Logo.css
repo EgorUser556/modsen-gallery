@@ -1,16 +1,11 @@
-.logo {
-  display: inline-flex;
-  align-items: baseline;
-  gap: 6px;
-  letter-spacing: 0.06em;
-  font-weight: 700;
-  color: #ffffff;
+.topbar__logo {
+  display: block;
+  height: 70px;
+  width: auto;
 }
 
-.logo__main {
-  font-size: 20px;
-}
-.logo__sub {
-  font-size: 11px;
-  color: var(--color-accent);
+@media (max-width: 390px) {
+  .topbar__logo {
+    margin-top: -43px;
+  }
 }

@@ -2,8 +2,10 @@ import './Header.css';
 
 import BurgerMenu from '@components/BurgerMenu/BurgerMenu';
 import Logo from '@components/Logo/Logo';
+import type { IconKey } from '@constants/icons';
+import { ICONS_BY_TO } from '@constants/icons';
 import LINKS from '@constants/links';
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
 const Header = () => {
@@ -34,11 +36,28 @@ const Header = () => {
               className={({ isActive }) => `topbar__link ${isActive ? 'is-active' : ''}`}
               to={to}
             >
-              {label}
+              {({ isActive }) => {
+                const icons = ICONS_BY_TO[to as IconKey];
+
+                let src: string | null = null;
+                if (icons) {
+                  src = isActive ? icons.active : icons.default;
+                }
+
+                return (
+                  <React.Fragment>
+                    {src ? (
+                      <img alt="" aria-hidden="true" className="topbar__linkIcon" src={src} />
+                    ) : null}
+                    <span className="topbar__linkText">{label}</span>
+                  </React.Fragment>
+                );
+              }}
             </NavLink>
           ))}
         </nav>
       </div>
+
       <BurgerMenu isOpen={isMenuOpen} links={LINKS} onClose={handleCloseMenu} />
     </header>
   );

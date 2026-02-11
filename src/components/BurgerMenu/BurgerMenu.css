@@ -2,7 +2,7 @@
   position: fixed;
   left: 0;
   right: 0;
-  top: 56px;
+  top: var(--header-height);
   z-index: 60;
   pointer-events: none;
   max-height: 0;
