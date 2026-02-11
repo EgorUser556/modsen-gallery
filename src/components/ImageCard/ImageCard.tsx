@@ -9,7 +9,7 @@ interface ImageCardProps {
   photo: UnsplashPhoto;
   isFavourite: boolean;
   onToggleFavourite: () => void;
-  onOpenModal: () => void;
+  onOpenModal?: () => void;
 }
 
 const ImageCard: React.FC<ImageCardProps> = ({

@@ -1,6 +1,6 @@
 import './style/main.css';
 
-import FavouritesProvider from '@store/FavouritesContext.tsx';
+import { FavouritesProvider } from '@store/FavouritesContext.tsx';
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';

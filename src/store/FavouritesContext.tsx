@@ -1,62 +1,106 @@
 import type { ReactNode } from 'react';
-import React, { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
 
+import type { FavouritesContextType, StoredFavourites } from '@/types/FavouriteContextTypes';
 import type { UnsplashPhoto } from '@/types/UnplashApiTypes';
 
-interface FavouritesContextType {
-  favouritesIds: string[];
-  toggleFavourite: (photo: UnsplashPhoto) => void;
-  isFavourite: (photoId: string) => boolean;
-}
+const FAVOURITES_KEY = 'favourites';
 
-const FAVOURITES_KEY = 'modsen_favourites';
+const FavouritesContext = createContext<FavouritesContextType | null>(null);
 
-export const FavouritesContext = createContext<FavouritesContextType | undefined>(undefined);
+const readStored = (): StoredFavourites => {
+  const empty: StoredFavourites = { ids: [], byId: {} };
 
-interface Props {
-  children: ReactNode;
-}
+  try {
+    const raw = sessionStorage.getItem(FAVOURITES_KEY);
+    if (!raw) return empty;
 
-const FavouritesProvider: React.FC<Props> = ({ children }) => {
-  const [favouritesIds, setFavouritesIds] = useState<string[]>(() => {
-    try {
-      const raw = sessionStorage.getItem(FAVOURITES_KEY);
-      if (!raw) return [];
+    const data = JSON.parse(raw) as StoredFavourites;
 
-      const parsed: unknown = JSON.parse(raw);
-      return Array.isArray(parsed) && parsed.every((x) => typeof x === 'string') ? parsed : [];
-    } catch {
-      return [];
-    }
-  });
+    return {
+      ids: Array.isArray(data.ids) ? data.ids : [],
+      byId: data.byId && typeof data.byId === 'object' ? data.byId : {},
+    };
+  } catch {
+    return empty;
+  }
+};
+
+const writeStored = (value: StoredFavourites) => {
+  sessionStorage.setItem(FAVOURITES_KEY, JSON.stringify(value));
+};
+
+export const FavouritesProvider = ({ children }: { children: ReactNode }) => {
+  const [stored, setStored] = useState<StoredFavourites>(readStored);
 
   useEffect(() => {
-    sessionStorage.setItem(FAVOURITES_KEY, JSON.stringify(favouritesIds));
-  }, [favouritesIds]);
+    writeStored(stored);
+  }, [stored]);
 
-  const toggleFavourite = useCallback((photo: UnsplashPhoto) => {
-    setFavouritesIds((prev) =>
-      prev.includes(photo.id) ? prev.filter((id) => id !== photo.id) : [...prev, photo.id],
-    );
+  const isFavourite = useCallback((photoId: string) => stored.ids.includes(photoId), [stored.ids]);
+
+  const removeFavourite = useCallback((photoId: string) => {
+    setStored((prev) => {
+      if (!prev.ids.includes(photoId)) return prev;
+
+      const ids = prev.ids.filter((id) => id !== photoId);
+      const { [photoId]: removed, ...byId } = prev.byId;
+      return { ids, byId };
+    });
   }, []);
 
-  const isFavourite = useCallback(
-    (photoId: string) => favouritesIds.includes(photoId),
-    [favouritesIds],
+  const toggleFavourite = useCallback((photo: UnsplashPhoto) => {
+    setStored((prev) => {
+      if (prev.ids.includes(photo.id)) {
+        const ids = prev.ids.filter((id) => id !== photo.id);
+        const { [photo.id]: removed, ...byId } = prev.byId;
+        return { ids, byId };
+      }
+
+      return {
+        ids: [...prev.ids, photo.id],
+        byId: { ...prev.byId, [photo.id]: photo },
+      };
+    });
+  }, []);
+
+  const clearFavourites = useCallback(() => {
+    setStored({ ids: [], byId: {} });
+  }, []);
+
+  const favouritesList = useMemo(
+    () => stored.ids.map((id) => stored.byId[id]).filter(Boolean),
+    [stored.ids, stored.byId],
   );
 
-  const value = useMemo(
-    () => ({ favouritesIds, toggleFavourite, isFavourite }),
-    [favouritesIds, toggleFavourite, isFavourite],
+  const value = useMemo<FavouritesContextType>(
+    () => ({
+      favouritesIds: stored.ids,
+      favouritesById: stored.byId,
+      favouritesList,
+      toggleFavourite,
+      isFavourite,
+      removeFavourite,
+      clearFavourites,
+    }),
+    [
+      stored.ids,
+      stored.byId,
+      favouritesList,
+      toggleFavourite,
+      isFavourite,
+      removeFavourite,
+      clearFavourites,
+    ],
   );
 
   return <FavouritesContext.Provider value={value}>{children}</FavouritesContext.Provider>;
 };
-
-export default FavouritesProvider;
 
 export const useFavourites = () => {
   const ctx = useContext(FavouritesContext);
   if (!ctx) throw new Error('useFavourites must be used inside FavouritesProvider');
   return ctx;
 };
+
+export default FavouritesProvider;
