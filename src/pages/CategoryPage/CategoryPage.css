@@ -1,12 +1,12 @@
 .category__title {
-  font-size: 42px;
+  font-size: 80px;
   text-align: center;
   color: #fff;
   -webkit-text-stroke: 0.5px black;
 }
 
 .category__title span {
-  color: #f39a2b;
+  color: var(--color-accent);
 }
 
 .category__content {

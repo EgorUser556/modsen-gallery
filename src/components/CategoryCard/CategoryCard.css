@@ -2,10 +2,10 @@
   border: 0;
   padding: 0;
   cursor: pointer;
+  height: 200px;
   background: #000;
   position: relative;
   overflow: hidden;
-  height: 150px;
 }
 
 .categoryCard__img {
@@ -29,6 +29,7 @@
   bottom: 10px;
   color: #fff;
   font-size: 12px;
+  font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
