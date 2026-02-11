@@ -30,14 +30,6 @@
   background: #efefef;
 }
 
-.images__grid {
-  display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: 18px;
-  max-width: 1040px;
-  margin: 32px auto 0;
-}
-
 .images-empty {
   display: flex;
   height: 1000px;

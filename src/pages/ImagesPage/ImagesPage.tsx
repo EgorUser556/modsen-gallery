@@ -1,6 +1,7 @@
 import './ImagesPage.css';
 
 import ImageCard from '@components/ImageCard/ImageCard';
+import ImageGrid from '@components/ImageGrid/ImageGrid';
 import Loader from '@components/Loader/Loader';
 import Modal from '@components/Modal/Modal';
 import Pagination from '@components/Pagination/Pagination';
@@ -49,7 +50,7 @@ const ImagesPage: React.FC = () => {
         ) : null}
         {!loading && hasResults && photos ? (
           <React.Fragment>
-            <div className="images__grid">
+            <ImageGrid>
               {photos.map((photo, index) => (
                 <ImageCard
                   key={photo.id}
@@ -59,8 +60,7 @@ const ImagesPage: React.FC = () => {
                   photo={photo}
                 />
               ))}
-            </div>
-
+            </ImageGrid>
             <Pagination current={page} onChange={setPage} />
           </React.Fragment>
         ) : null}
