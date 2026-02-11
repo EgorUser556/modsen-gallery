@@ -23,6 +23,9 @@ const Modal: React.FC<ModalProps> = ({
 }) => {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const [isLoadingImage, setIsLoadingImage] = useState(true);
+  if (photos.length === 0) {
+    throw new Error('Modal: photos is empty');
+  }
 
   const currentPhoto = photos[currentIndex];
 

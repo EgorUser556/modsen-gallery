@@ -7,6 +7,7 @@ import type { OrderBy, UnsplashPhoto } from '@/types/UnplashApiTypes';
 export default function usePhotos(query: string, page: number, orderBy: OrderBy) {
   const [photos, setPhotos] = useState<UnsplashPhoto[] | null>(null);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
   const debouncedQuery = useDebounce(query, 500);
 
@@ -31,8 +32,10 @@ export default function usePhotos(query: string, page: number, orderBy: OrderBy)
         });
 
         if (!cancelled) setPhotos(data.results);
-      } catch {
-        if (!cancelled) setPhotos([]);
+      } catch (e) {
+        if (!cancelled) {
+          setError(e instanceof Error ? e : new Error('Failed to load photos'));
+        }
       } finally {
         if (!cancelled) setLoading(false);
       }
@@ -43,5 +46,5 @@ export default function usePhotos(query: string, page: number, orderBy: OrderBy)
     };
   }, [debouncedQuery, page, orderBy]);
 
-  return { photos, loading };
+  return { photos, loading, error };
 }

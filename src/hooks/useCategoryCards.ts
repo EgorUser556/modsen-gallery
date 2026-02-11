@@ -1,4 +1,4 @@
-import { buildFallbackCategoryCards, fetchCategoryCards } from '@api/categoryApi';
+import { fetchCategoryCards } from '@api/categoryApi';
 import { useEffect, useState } from 'react';
 
 import type { CategoryCardModel } from '@/types/CategoryCardType';
@@ -6,6 +6,7 @@ import type { CategoryCardModel } from '@/types/CategoryCardType';
 const useCategoryCards = () => {
   const [cards, setCards] = useState<CategoryCardModel[]>([]);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<Error | null>(null);
 
   useEffect(() => {
     let cancelled = false;
@@ -18,10 +19,9 @@ const useCategoryCards = () => {
         if (!cancelled) {
           setCards(results);
         }
-      } catch {
+      } catch (e) {
         if (!cancelled) {
-          const fallback = buildFallbackCategoryCards();
-          setCards(fallback);
+          setError(e instanceof Error ? e : new Error('Failed to load categories'));
         }
       } finally {
         if (!cancelled) {
@@ -37,7 +37,7 @@ const useCategoryCards = () => {
     };
   }, []);
 
-  return { cards, loading };
+  return { cards, loading, error };
 };
 
 export default useCategoryCards;

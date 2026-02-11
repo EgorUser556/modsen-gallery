@@ -1,5 +1,6 @@
 import './ImagesPage.css';
 
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import ImageCard from '@components/ImageCard/ImageCard';
 import ImageGrid from '@components/ImageGrid/ImageGrid';
 import Loader from '@components/Loader/Loader';
@@ -15,7 +16,8 @@ import React, { useState } from 'react';
 
 const ImagesPage: React.FC = () => {
   const { query, orderBy, page, setQuery, setOrderBy, setPage } = useImagesSearchParams();
-  const { photos, loading } = usePhotos(query, page, orderBy);
+  const { photos, loading, error } = usePhotos(query, page, orderBy);
+  if (error) throw error;
 
   const { isFavourite, toggleFavourite } = useFavourites();
   const [activeIndex, setActiveIndex] = useState<number | null>(null);
@@ -39,41 +41,45 @@ const ImagesPage: React.FC = () => {
       </section>
 
       <section className="images__content">
-        {loading ? <Loader /> : null}
-        {showEmpty ? (
-          <section className="images-empty">
-            <h1 className="images-empty__title">
-              The Search Didn&apos;t <br />
-              Yield Any Results, <br />
-              Please Try <span>Again.</span>
-            </h1>
-          </section>
-        ) : null}
-        {!loading && hasResults && photos ? (
-          <React.Fragment>
-            <ImageGrid>
-              {photos.map((photo, index) => (
-                <ImageCard
-                  key={photo.id}
-                  isFavourite={isFavourite(photo.id)}
-                  onOpenModal={() => setActiveIndex(index)}
-                  onToggleFavourite={() => toggleFavourite(photo)}
-                  photo={photo}
-                />
-              ))}
-            </ImageGrid>
-            <Pagination current={page} onChange={setPage} />
-          </React.Fragment>
-        ) : null}
+        <ErrorBoundary>
+          {loading ? <Loader /> : null}
+          {showEmpty ? (
+            <section className="images-empty">
+              <h1 className="images-empty__title">
+                The Search Didn&apos;t <br />
+                Yield Any Results, <br />
+                Please Try <span>Again.</span>
+              </h1>
+            </section>
+          ) : null}
+          {!loading && hasResults && photos ? (
+            <React.Fragment>
+              <ImageGrid>
+                {photos.map((photo, index) => (
+                  <ImageCard
+                    key={photo.id}
+                    isFavourite={isFavourite(photo.id)}
+                    onOpenModal={() => setActiveIndex(index)}
+                    onToggleFavourite={() => toggleFavourite(photo)}
+                    photo={photo}
+                  />
+                ))}
+              </ImageGrid>
+              <Pagination current={page} onChange={setPage} />
+            </React.Fragment>
+          ) : null}
+        </ErrorBoundary>
       </section>
       {activeIndex !== null && photos && photos.length > 0 ? (
-        <Modal
-          initialIndex={activeIndex}
-          isFavourite={isFavourite}
-          onClose={() => setActiveIndex(null)}
-          onToggleFavourite={toggleFavourite}
-          photos={photos}
-        />
+        <ErrorBoundary>
+          <Modal
+            initialIndex={activeIndex}
+            isFavourite={isFavourite}
+            onClose={() => setActiveIndex(null)}
+            onToggleFavourite={toggleFavourite}
+            photos={photos}
+          />
+        </ErrorBoundary>
       ) : null}
     </main>
   );

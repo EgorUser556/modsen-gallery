@@ -1,0 +1,21 @@
+.root {
+  height: 600px;
+  padding: 24px;
+  display: grid;
+  place-items: center;
+  text-align: center;
+  color: #111;
+}
+
+.title {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.text {
+  margin-top: 8px;
+  font-size: 14px;
+  line-height: 1.4;
+  opacity: 0.75;
+}

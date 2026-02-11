@@ -1,5 +1,6 @@
 import '../ImagesPage/ImagesPage.css';
 
+import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import ImageCard from '@components/ImageCard/ImageCard';
 import ImageGrid from '@components/ImageGrid/ImageGrid';
 import Loader from '@components/Loader/Loader';
@@ -40,16 +41,18 @@ const FavouritePage: React.FC = () => {
       )}
 
       {!debouncedLoading && favouritesList.length > 0 && (
-        <ImageGrid>
-          {favouritesList.map((photo) => (
-            <ImageCard
-              key={photo.id}
-              isFavourite={isFavourite(photo.id)}
-              onToggleFavourite={() => toggleFavourite(photo)}
-              photo={photo}
-            />
-          ))}
-        </ImageGrid>
+        <ErrorBoundary>
+          <ImageGrid>
+            {favouritesList.map((photo) => (
+              <ImageCard
+                key={photo.id}
+                isFavourite={isFavourite(photo.id)}
+                onToggleFavourite={() => toggleFavourite(photo)}
+                photo={photo}
+              />
+            ))}
+          </ImageGrid>
+        </ErrorBoundary>
       )}
     </section>
   );
