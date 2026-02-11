@@ -1,0 +1,11 @@
+.image {
+  position: relative;
+  height: 421px;
+  padding-top: 56px;
+  background-image: url('/public/top.jpg');
+  background-size: cover;
+  background-position: center;
+  display: grid;
+  place-items: center;
+  color: #fff;
+}

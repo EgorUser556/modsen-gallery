@@ -2,6 +2,7 @@ import './CategoryPage.css';
 
 import CategoryCard from '@components/CategoryCard/CategoryCard';
 import Loader from '@components/Loader/Loader';
+import TopImage from '@components/TopImage/TopImage';
 import useCategoryCards from '@hooks/useCategoryCards';
 import { useNavigate } from 'react-router-dom';
 
@@ -15,12 +16,12 @@ const CategoryPage = () => {
 
   return (
     <main className="category">
-      <section className="category__hero">
+      <TopImage>
         <h1 className="category__title">
           Let&apos;s Find Some <br />
           <span>Images</span> Here!
         </h1>
-      </section>
+      </TopImage>
       <section className="category__content">
         {loading ? (
           <Loader />

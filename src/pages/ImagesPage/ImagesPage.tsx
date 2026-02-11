@@ -7,6 +7,7 @@ import Modal from '@components/Modal/Modal';
 import Pagination from '@components/Pagination/Pagination';
 import SortSelect from '@components/SortSelect/SortSelect';
 import Toolbar from '@components/Toolbar/Toolbar';
+import TopImage from '@components/TopImage/TopImage';
 import useImagesSearchParams from '@hooks/useImagesSearchParams';
 import usePhotos from '@hooks/usePhotos';
 import { useFavourites } from '@store/FavouritesContext';
@@ -24,14 +25,14 @@ const ImagesPage: React.FC = () => {
 
   return (
     <main className="images">
-      <section className="images__hero">
+      <TopImage>
         <h1 className="images__title">
           Let&apos;s Find Some <br />
           <span>Images</span> Here!
         </h1>
 
         <Toolbar onQueryChange={setQuery} query={query} />
-      </section>
+      </TopImage>
 
       <section className="images__sort-row">
         <SortSelect onChange={setOrderBy} value={orderBy} />

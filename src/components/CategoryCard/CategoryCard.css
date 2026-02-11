@@ -36,3 +36,9 @@
 .categoryCard__img--placeholder {
   background: #333;
 }
+
+@media (max-width: 390px) {
+  .categoryCard {
+    height: 150px;
+  }
+}
