@@ -1,12 +1,9 @@
 :root {
   --header-height: 56px;
   --container-width: 980px;
-
   --page-padding-x: 24px;
   --page-padding-x-mobile: 14px;
-
   --radius-pill: 999px;
-
   --color-header-bg: rgb(53, 52, 52);
   --color-footer-bg: rgb(53, 52, 52);
   --color-body-bg: #efefef;

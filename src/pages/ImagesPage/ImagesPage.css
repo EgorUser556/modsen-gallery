@@ -1,6 +1,5 @@
 .images {
   background: #efefef;
-  min-height: 60vh;
 }
 
 .images__hero {
@@ -32,6 +31,7 @@
 
 .images-empty {
   display: flex;
+  justify-content: center;
   height: 1000px;
   padding: 80px 24px 60px;
   text-align: center;
