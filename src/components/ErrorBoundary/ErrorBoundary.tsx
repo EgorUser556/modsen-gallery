@@ -19,7 +19,7 @@ class ErrorBoundary extends React.Component<Props, State> {
     return { isError: true };
   }
 
-  async render() {
+  render() {
     const { children } = this.props;
     const { isError } = this.state;
 

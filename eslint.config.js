@@ -76,6 +76,7 @@ export default defineConfig([
       'react/jsx-uses-react': 'off',
       'react/require-default-props': 'off',
       '@typescript-eslint/explicit-module-boundary-types': 'off',
+      '@typescript-eslint/promise-function-async': 'off',
     },
   },
 ]);

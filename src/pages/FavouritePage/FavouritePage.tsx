@@ -26,9 +26,7 @@ const FavouritePage: React.FC = () => {
           <h1 className={styles.title}>Your favorites list</h1>
         </div>
       )}
-
       {debouncedLoading ? <Loader /> : null}
-
       {!debouncedLoading && favouritesList.length === 0 && (
         <section className={styles.empty}>
           <h1 className={styles.emptyTitle}>
@@ -36,7 +34,6 @@ const FavouritePage: React.FC = () => {
           </h1>
         </section>
       )}
-
       {!debouncedLoading && favouritesList.length > 0 && (
         <ErrorBoundary>
           <ImageGrid>

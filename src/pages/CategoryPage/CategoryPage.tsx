@@ -25,7 +25,6 @@ const CategoryPage: React.FC = () => {
           <span>Images</span> Here!
         </h1>
       </TopImage>
-
       <section className={styles.content}>
         <ErrorBoundary>
           {loading ? (
