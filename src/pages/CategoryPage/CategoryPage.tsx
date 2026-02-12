@@ -3,11 +3,12 @@ import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import Loader from '@components/Loader/Loader';
 import TopImage from '@components/TopImage/TopImage';
 import useCategoryCards from '@hooks/useCategoryCards';
+import React from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import styles from './CategoryPage.module.css';
 
-const CategoryPage = () => {
+const CategoryPage: React.FC = () => {
   const navigate = useNavigate();
   const { cards, loading, error } = useCategoryCards();
   if (error) throw error;

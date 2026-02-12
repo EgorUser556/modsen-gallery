@@ -6,7 +6,7 @@
   background: var(--color-header-bg);
   backdrop-filter: blur(2px);
   color: var(--color-text-main);
-  z-index: 10;
+  z-index: 100;
 }
 
 .inner {
@@ -46,7 +46,7 @@
 
 .active {
   opacity: 1;
-  color: #e0a449;
+  color: var(--color-footer-section-title);
 }
 
 .icon {

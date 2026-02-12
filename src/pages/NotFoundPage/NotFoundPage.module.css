@@ -9,32 +9,25 @@
 
 .content {
   text-align: center;
-  max-width: 520px;
+  font-family: 'Lexend Deca', serif;
+  margin-top: 100px;
 }
 
 .code {
-  font-size: 64px;
+  font-size: 100px;
   line-height: 64px;
   font-weight: 800;
   color: var(--color-accent);
-  margin: 0 0 6px;
+  margin: 0 0 25px;
 }
 
 .label {
-  font-size: 14px;
+  font-size: 35px;
   line-height: 18px;
   font-weight: 700;
   letter-spacing: 1px;
   color: var(--color-accent);
   margin: 0 0 18px;
-}
-
-.title {
-  margin: 0;
-  font-size: 30px;
-  line-height: 32px;
-  font-weight: 800;
-  color: #2a2a2a;
 }
 
 .accent {
@@ -50,11 +43,12 @@
 }
 
 .emptyTitle {
-  width: 100%;
-  font-size: 50px;
+  font-size: var(--font-size-large);
   font-weight: 700;
   justify-content: center;
-  color: #000;
+  color: var(--color-text-dark);
+  width: 43%;
+  font-family: 'Lexend Deca', serif;
 }
 
 .emptyTitle span {
@@ -66,13 +60,13 @@
     padding: 70px 14px 70px;
   }
 
-  .code {
-    font-size: 52px;
-    line-height: 52px;
-  }
-
   .title {
     font-size: 22px;
     line-height: 28px;
+  }
+
+  .emptyTitle {
+    width: 100%;
+    font-size: var(--font-size-small);
   }
 }

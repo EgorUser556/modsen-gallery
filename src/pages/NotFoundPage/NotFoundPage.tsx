@@ -10,13 +10,7 @@ const NotFoundPage: React.FC = () => (
 
       <section className={styles.empty}>
         <h1 className={styles.emptyTitle}>
-          The Page Was <span>Not</span>
-          <br />
-          <span>Found</span>, Please
-          <br />
-          Return To The Main
-          <br />
-          Page.
+          The Page Was <span>Not Found</span>, Please Return To The Main Page.
         </h1>
       </section>
     </div>

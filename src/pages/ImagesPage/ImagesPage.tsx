@@ -24,36 +24,33 @@ const ImagesPage: React.FC = () => {
 
   const hasResults = (photos?.length ?? 0) > 0;
   const showEmpty = !loading && photos !== null && photos.length === 0;
+  const [isSortOpen, setIsSortOpen] = useState(false);
 
   return (
     <main className={styles.root}>
       <TopImage>
         <h1 className={styles.title}>
-          Let&apos;s Find Some <br />
-          <span>Images</span> Here!
+          Let&apos;s Find Some
+          <span> Images</span> Here!
         </h1>
-
         <Toolbar onQueryChange={setQuery} query={query} />
       </TopImage>
-
-      <section className={styles.sortRow}>
-        <SortSelect onChange={setOrderBy} value={orderBy} />
-      </section>
-
+      {!showEmpty && (
+        <section className={styles.sortRow}>
+          <SortSelect onChange={setOrderBy} onOpenChange={setIsSortOpen} value={orderBy} />
+        </section>
+      )}
       <section className={styles.content}>
         <ErrorBoundary>
           {loading ? <Loader /> : null}
-
+          {isSortOpen ? <div className={styles.whiteOverlay} /> : null}
           {showEmpty ? (
             <section className={styles.empty}>
               <h1 className={styles.emptyTitle}>
-                The Search Didn&apos;t <br />
-                Yield Any Results, <br />
-                Please Try <span>Again.</span>
+                The Search Didn&apos;t Yield Any Results, Please Try <span>Again.</span>
               </h1>
             </section>
           ) : null}
-
           {!loading && hasResults && photos ? (
             <React.Fragment>
               <ImageGrid>

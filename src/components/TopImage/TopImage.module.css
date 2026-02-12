@@ -7,5 +7,12 @@
   background-position: center;
   display: grid;
   place-items: center;
-  color: #fff;
+  color: var(--color-text-main);
+  z-index: 99;
+}
+
+@media (max-width: 390px) {
+  .image {
+    height: 250px;
+  }
 }

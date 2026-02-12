@@ -2,20 +2,10 @@
   background: var(--color-body-bg);
 }
 
-.hero {
-  position: relative;
-  height: 421px;
-  padding-top: 56px;
-  background-image: url('/public/top.jpg');
-  background-size: cover;
-  background-position: center;
-  display: grid;
-  place-items: center;
-  color: #fff;
-}
-
 .title {
-  font-size: 42px;
+  margin-top: 20px;
+  width: 60%;
+  font-size: 65px;
   text-align: center;
   -webkit-text-stroke: 0.5px black;
 }
@@ -33,6 +23,7 @@
   display: flex;
   justify-content: flex-end;
   padding: 16px 60px 0;
+  margin-right: 110px;
 }
 
 .empty {
@@ -44,11 +35,12 @@
 }
 
 .emptyTitle {
-  width: 100%;
-  font-size: 50px;
+  width: 40%;
+  font-size: var(--font-size-large);
   font-weight: 700;
   justify-content: center;
-  color: #000;
+  color: var(--color-text-dark);
+  font-family: 'Lexend Deca', serif;
 }
 
 .emptyTitle span {
@@ -61,10 +53,25 @@
   }
 
   .title {
-    font-size: 32px;
+    width: 90%;
+    font-size: 30px;
   }
 
   .sortRow {
     padding: 12px 14px 0;
+  }
+
+  .whiteOverlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 1);
+    backdrop-filter: blur(3px);
+    z-index: 20;
+    pointer-events: auto;
+  }
+
+  .emptyTitle {
+    width: 100%;
+    font-size: 40px;
   }
 }

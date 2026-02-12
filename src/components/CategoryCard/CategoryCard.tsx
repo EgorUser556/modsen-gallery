@@ -7,7 +7,6 @@ const CategoryCard = ({ card, onClick }: CategoryCardProps) => {
   if (!card) {
     throw new Error('null value');
   }
-
   return (
     <button className={styles.card} onClick={onClick} type="button">
       {imageUrl ? (

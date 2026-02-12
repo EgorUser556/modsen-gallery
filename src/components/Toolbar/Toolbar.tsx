@@ -10,14 +10,13 @@ interface ToolbarProps {
 const Toolbar: React.FC<ToolbarProps> = ({ query, onQueryChange }) => (
   <div className={styles.root}>
     <form className={styles.search} onSubmit={(event) => event.preventDefault()}>
-      <span aria-hidden="true" className={styles.icon} />
-
       <input
         className={styles.input}
         onChange={(event) => onQueryChange(event.target.value)}
         placeholder="Food"
         value={query}
       />
+      <span aria-hidden="true" className={styles.icon} />
     </form>
   </div>
 );

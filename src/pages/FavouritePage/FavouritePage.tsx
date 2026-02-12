@@ -32,8 +32,7 @@ const FavouritePage: React.FC = () => {
       {!debouncedLoading && favouritesList.length === 0 && (
         <section className={styles.empty}>
           <h1 className={styles.emptyTitle}>
-            Your <span>Favorites</span> List <br />
-            Is Empty
+            Your <span>Favorites</span> List Is Empty
           </h1>
         </section>
       )}

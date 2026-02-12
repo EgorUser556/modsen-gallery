@@ -9,9 +9,10 @@
 }
 
 .item {
+  font-family: 'Lexend Deca', serif;
   min-width: 30px;
   height: 30px;
-  border-radius: 6px;
+  border-radius: var(--radius-s);
   border: none;
   background: var(--color-body-bg);
   font-size: 14px;
@@ -24,7 +25,7 @@
 
 .itemActive {
   background: var(--color-accent);
-  color: #ffffff;
+  color: var(--color-text-main);
 }
 
 .item:hover {
@@ -34,7 +35,7 @@
 .next {
   width: 30px;
   height: 30px;
-  border-radius: 6px;
+  border-radius: var(--radius-s);
   border: none;
   background: var(--color-body-bg) url('@assets/chevron-right.svg') center / 14px 14px no-repeat;
   cursor: pointer;

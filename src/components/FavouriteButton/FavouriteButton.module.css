@@ -1,7 +1,7 @@
 .btn {
   width: 34px;
   height: 34px;
-  border-radius: 8px;
+  border-radius: var(--radius-s);
   border: none;
   background: transparent url('@assets/bookmark-outline.svg') center / 40px 40px no-repeat;
   cursor: pointer;
