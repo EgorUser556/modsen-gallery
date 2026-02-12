@@ -1,4 +1,4 @@
-.categoryCard {
+.card {
   border: 0;
   padding: 0;
   cursor: pointer;
@@ -8,7 +8,7 @@
   overflow: hidden;
 }
 
-.categoryCard__img {
+.img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -18,28 +18,28 @@
     opacity 200ms ease;
 }
 
-.categoryCard:hover .categoryCard__img {
+.card:hover .img {
   transform: scale(1.03);
   opacity: 1;
 }
 
-.categoryCard__label {
+.label {
   position: absolute;
   left: 10px;
   bottom: 10px;
-  color: #fff;
+  color: var(--color-text-main);
   font-size: 12px;
   font-weight: 600;
   letter-spacing: 0.06em;
   text-transform: uppercase;
 }
 
-.categoryCard__img--placeholder {
+.placeholder {
   background: #333;
 }
 
 @media (max-width: 390px) {
-  .categoryCard {
+  .card {
     height: 150px;
   }
 }

@@ -1,4 +1,4 @@
-.bookmark-button {
+.btn {
   width: 34px;
   height: 34px;
   border-radius: 8px;
@@ -8,10 +8,10 @@
   transition: transform 150ms ease;
 }
 
-.bookmark-button:hover {
+.btn:hover {
   transform: scale(1.05);
 }
 
-.bookmark-button--active {
+.active {
   background: transparent url('@assets/bookmark-filled.svg') center / 40px 40px no-repeat;
 }

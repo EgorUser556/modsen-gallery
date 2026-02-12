@@ -1,6 +1,6 @@
-import './Pagination.css';
-
 import React from 'react';
+
+import styles from './Pagination.module.css';
 
 interface PaginationProps {
   current: number;
@@ -17,15 +17,13 @@ const Pagination: React.FC<PaginationProps> = ({ current, onChange }) => {
   };
 
   return (
-    <nav aria-label="Pagination" className="pagination">
+    <nav aria-label="Pagination" className={styles.root}>
       {pages.map((page) => (
         <button
           key={page}
+          className={`${styles.item} ${page === current ? styles.itemActive : ''}`}
           onClick={() => onChange(page)}
           type="button"
-          className={
-            page === current ? 'pagination__item pagination__item--active' : 'pagination__item'
-          }
         >
           {page}
         </button>
@@ -34,7 +32,7 @@ const Pagination: React.FC<PaginationProps> = ({ current, onChange }) => {
       {current < 4 && (
         <button
           aria-label="Next page"
-          className="pagination__next"
+          className={styles.next}
           onClick={handleNextClick}
           type="button"
         />

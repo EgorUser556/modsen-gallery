@@ -1,10 +1,10 @@
-import './Loader.css';
-
 import React from 'react';
 
+import styles from './Loader.module.css';
+
 const Loader: React.FC = () => (
-  <div className="images-loader">
-    <div className="images-loader__spinner" />
+  <div className={styles.root}>
+    <div className={styles.spinner} />
   </div>
 );
 

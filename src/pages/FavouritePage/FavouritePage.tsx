@@ -1,5 +1,3 @@
-import '../ImagesPage/ImagesPage.css';
-
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import ImageCard from '@components/ImageCard/ImageCard';
 import ImageGrid from '@components/ImageGrid/ImageGrid';
@@ -32,8 +30,8 @@ const FavouritePage: React.FC = () => {
       {debouncedLoading ? <Loader /> : null}
 
       {!debouncedLoading && favouritesList.length === 0 && (
-        <section className="images-empty">
-          <h1 className="images-empty__title">
+        <section className={styles.empty}>
+          <h1 className={styles.emptyTitle}>
             Your <span>Favorites</span> List <br />
             Is Empty
           </h1>

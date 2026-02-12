@@ -8,15 +8,17 @@ const NotFoundPage: React.FC = () => (
       <div className={styles.code}>404</div>
       <div className={styles.label}>NOT FOUND</div>
 
-      <h1 className={styles.title}>
-        The Page Was <span className={styles.accent}>Not</span>
-        <br />
-        <span className={styles.accent}>Found</span>, Please
-        <br />
-        Return To The Main
-        <br />
-        Page.
-      </h1>
+      <section className={styles.empty}>
+        <h1 className={styles.emptyTitle}>
+          The Page Was <span>Not</span>
+          <br />
+          <span>Found</span>, Please
+          <br />
+          Return To The Main
+          <br />
+          Page.
+        </h1>
+      </section>
     </div>
   </section>
 );

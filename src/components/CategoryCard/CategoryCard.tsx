@@ -1,20 +1,21 @@
-import './CategoryCard.css';
-
 import type { CategoryCardProps } from '@/types/CategoryCardType';
+
+import styles from './CategoryCard.module.css';
 
 const CategoryCard = ({ card, onClick }: CategoryCardProps) => {
   const { title, imageUrl } = card;
   if (!card) {
     throw new Error('null value');
   }
+
   return (
-    <button className="categoryCard" onClick={onClick} type="button">
+    <button className={styles.card} onClick={onClick} type="button">
       {imageUrl ? (
-        <img alt={title} className="categoryCard__img" loading="lazy" src={imageUrl} />
+        <img alt={title} className={styles.img} loading="lazy" src={imageUrl} />
       ) : (
-        <div aria-hidden="true" className="categoryCard__img categoryCard__img--placeholder" />
+        <div aria-hidden="true" className={`${styles.img} ${styles.placeholder}`} />
       )}
-      <div className="categoryCard__label">{title}</div>
+      <div className={styles.label}>{title}</div>
     </button>
   );
 };

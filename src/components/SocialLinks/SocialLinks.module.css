@@ -1,9 +1,9 @@
-.socialLinks {
+.root {
   display: flex;
   gap: 10px;
 }
 
-.socialLinks__btn {
+.btn {
   appearance: none;
   -webkit-appearance: none;
   border: 0;
@@ -23,17 +23,17 @@
     opacity 160ms ease;
 }
 
-.socialLinks__btn:hover {
+.btn:hover {
   opacity: 1;
   transform: translateY(-2px);
 }
 
-.socialLinks__btn:active {
+.btn:active {
   opacity: 0.95;
   transform: translateY(-1px);
 }
 
-.socialLinks__icon {
+.icon {
   width: 14px;
   height: 14px;
   display: block;

@@ -1,6 +1,6 @@
-import './FavouriteButton.css';
-
 import React from 'react';
+
+import styles from './FavouriteButton.module.css';
 
 interface FavouriteButtonProps {
   isActive: boolean;
@@ -10,7 +10,7 @@ interface FavouriteButtonProps {
 const FavouriteButton: React.FC<FavouriteButtonProps> = ({ isActive, onClick }) => (
   <button
     aria-label={isActive ? 'Remove from favourites' : 'Add to favourites'}
-    className={isActive ? `bookmark-button bookmark-button--active` : `bookmark-button`}
+    className={`${styles.btn} ${isActive ? styles.active : ''}`}
     onClick={onClick}
     type="button"
   />

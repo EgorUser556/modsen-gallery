@@ -1,9 +1,9 @@
-import './ImageCard.css';
-
 import FavouriteButton from '@components/FavouriteButton/FavouriteButton';
 import React from 'react';
 
 import type { UnsplashPhoto } from '@/types/UnplashApiTypes';
+
+import styles from './ImageCard.module.css';
 
 interface ImageCardProps {
   photo: UnsplashPhoto;
@@ -18,18 +18,17 @@ const ImageCard: React.FC<ImageCardProps> = ({
   onToggleFavourite,
   onOpenModal,
 }) => (
-  <article className="images-card">
-    <button className="wrapper" onClick={onOpenModal} type="button">
+  <article className={styles.card}>
+    <button className={styles.btn} onClick={onOpenModal} type="button">
       <img
         alt={photo.alt_description ?? 'Image'}
-        className="image"
+        className={styles.img}
         loading="lazy"
         src={photo.urls.small}
       />
     </button>
-    <div className="images-card__footer">
-      <h3 className="images-card__title">{photo.description ?? photo.alt_description}</h3>
-
+    <div className={styles.footer}>
+      <h3 className={styles.title}>{photo.description ?? photo.alt_description}</h3>
       <FavouriteButton isActive={isFavourite} onClick={onToggleFavourite} />
     </div>
   </article>

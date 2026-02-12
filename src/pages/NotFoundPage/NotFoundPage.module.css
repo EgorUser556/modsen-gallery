@@ -41,6 +41,26 @@
   color: var(--color-accent);
 }
 
+.empty {
+  display: flex;
+  justify-content: center;
+  height: 1000px;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+.emptyTitle {
+  width: 100%;
+  font-size: 50px;
+  font-weight: 700;
+  justify-content: center;
+  color: #000;
+}
+
+.emptyTitle span {
+  color: var(--color-accent);
+}
+
 @media (max-width: 390px) {
   .page {
     padding: 70px 14px 70px;

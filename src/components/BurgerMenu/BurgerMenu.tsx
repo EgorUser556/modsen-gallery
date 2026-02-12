@@ -1,7 +1,8 @@
-import './BurgerMenu.css';
-
 import SocialLinks from '@components/SocialLinks/SocialLinks';
+import React from 'react';
 import { NavLink } from 'react-router-dom';
+
+import styles from './BurgerMenu.module.css';
 
 export interface BurgerMenuLink {
   label: string;
@@ -14,14 +15,14 @@ interface BurgerMenuProps {
   onClose: () => void;
 }
 
-const BurgerMenu = ({ isOpen, links, onClose }: BurgerMenuProps) => (
-  <div className={`burgerMenu ${isOpen ? 'burgerMenu--open' : ''}`}>
-    <div className="burgerMenu__content">
-      <nav aria-label="Mobile navigation" className="burgerMenu__nav">
+const BurgerMenu: React.FC<BurgerMenuProps> = ({ isOpen, links, onClose }) => (
+  <div className={`${styles.root} ${isOpen ? styles.open : ''}`}>
+    <div className={styles.content}>
+      <nav aria-label="Mobile navigation" className={styles.nav}>
         {links.map((l) => (
           <NavLink
             key={l.to}
-            className={({ isActive }) => `burgerMenu__link ${isActive ? 'is-active' : ''}`}
+            className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
             onClick={onClose}
             to={l.to}
           >
@@ -29,7 +30,8 @@ const BurgerMenu = ({ isOpen, links, onClose }: BurgerMenuProps) => (
           </NavLink>
         ))}
       </nav>
-      <div className="burgerMenu__social">
+
+      <div className={styles.social}>
         <SocialLinks />
       </div>
     </div>

@@ -14,7 +14,7 @@
   margin: 0 0 8px;
   font-size: 20px;
   line-height: 18px;
-  color: #e0a449;
+  color: var(--color-footer-section-title);
   letter-spacing: 0.2px;
 }
 
@@ -26,9 +26,31 @@
   color: #2a2a2a;
 }
 
+/* добавил вместо глобальных .images-empty */
+.empty {
+  display: flex;
+  justify-content: center;
+  height: 1000px;
+  padding: 80px 24px 60px;
+  text-align: center;
+}
+
+/* добавил вместо глобальных .images-empty__title */
+.emptyTitle {
+  width: 100%;
+  font-size: 50px;
+  font-weight: 700;
+  justify-content: center;
+  color: #000;
+}
+
+.emptyTitle span {
+  color: var(--color-accent);
+}
+
 @media (max-width: 390px) {
   .page {
-    padding: 60px 14px 54px;
+    padding: 60px var(--page-padding-x-mobile) 54px;
   }
 
   .titleBlock {

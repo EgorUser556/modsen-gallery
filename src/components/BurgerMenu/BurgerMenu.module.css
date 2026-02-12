@@ -1,4 +1,4 @@
-.burgerMenu {
+.root {
   position: fixed;
   left: 0;
   right: 0;
@@ -11,40 +11,44 @@
 }
 
 @media (min-width: 391px) {
-  .burgerMenu {
+  .root {
     display: none;
   }
 }
 
-.burgerMenu--open {
+.open {
   pointer-events: auto;
   max-height: 400px;
 }
 
-.burgerMenu__content {
-  background: rgb(53, 52, 52);
+.content {
+  background: var(--color-header-bg);
   padding: 20px 0 18px;
   display: grid;
   gap: 20px;
 }
 
-.burgerMenu__nav {
+.nav {
   display: grid;
   gap: 12px;
   justify-items: center;
 }
 
-.burgerMenu__link {
+.link {
   text-decoration: none;
   font-size: 20px;
-  color: #ffffff;
+  color: var(--color-text-main);
 }
 
-.burgerMenu__link.is-active {
-  color: #f39a2b;
+.link:hover {
+  color: var(--color-text-soft);
 }
 
-.burgerMenu__social {
+.active {
+  color: var(--color-footer-social-bg-hover);
+}
+
+.social {
   display: flex;
   justify-content: center;
 }

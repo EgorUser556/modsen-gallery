@@ -1,11 +1,11 @@
-.topbar__logo {
+.logo {
   display: block;
-  height: 70px;
+  height: var(--header-height);
   width: auto;
 }
 
 @media (max-width: 390px) {
-  .topbar__logo {
+  .logo {
     margin-top: -43px;
   }
 }

@@ -1,5 +1,3 @@
-import './ImagesPage.css';
-
 import ErrorBoundary from '@components/ErrorBoundary/ErrorBoundary';
 import ImageCard from '@components/ImageCard/ImageCard';
 import ImageGrid from '@components/ImageGrid/ImageGrid';
@@ -14,6 +12,8 @@ import usePhotos from '@hooks/usePhotos';
 import { useFavourites } from '@store/FavouritesContext';
 import React, { useState } from 'react';
 
+import styles from './ImagesPage.module.css';
+
 const ImagesPage: React.FC = () => {
   const { query, orderBy, page, setQuery, setOrderBy, setPage } = useImagesSearchParams();
   const { photos, loading, error } = usePhotos(query, page, orderBy);
@@ -26,9 +26,9 @@ const ImagesPage: React.FC = () => {
   const showEmpty = !loading && photos !== null && photos.length === 0;
 
   return (
-    <main className="images">
+    <main className={styles.root}>
       <TopImage>
-        <h1 className="images__title">
+        <h1 className={styles.title}>
           Let&apos;s Find Some <br />
           <span>Images</span> Here!
         </h1>
@@ -36,22 +36,24 @@ const ImagesPage: React.FC = () => {
         <Toolbar onQueryChange={setQuery} query={query} />
       </TopImage>
 
-      <section className="images__sort-row">
+      <section className={styles.sortRow}>
         <SortSelect onChange={setOrderBy} value={orderBy} />
       </section>
 
-      <section className="images__content">
+      <section className={styles.content}>
         <ErrorBoundary>
           {loading ? <Loader /> : null}
+
           {showEmpty ? (
-            <section className="images-empty">
-              <h1 className="images-empty__title">
+            <section className={styles.empty}>
+              <h1 className={styles.emptyTitle}>
                 The Search Didn&apos;t <br />
                 Yield Any Results, <br />
                 Please Try <span>Again.</span>
               </h1>
             </section>
           ) : null}
+
           {!loading && hasResults && photos ? (
             <React.Fragment>
               <ImageGrid>
@@ -70,6 +72,7 @@ const ImagesPage: React.FC = () => {
           ) : null}
         </ErrorBoundary>
       </section>
+
       {activeIndex !== null && photos && photos.length > 0 ? (
         <ErrorBoundary>
           <Modal

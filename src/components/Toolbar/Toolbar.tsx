@@ -1,6 +1,6 @@
-import './Toolbar.css';
-
 import React from 'react';
+
+import styles from './Toolbar.module.css';
 
 interface ToolbarProps {
   query: string;
@@ -8,12 +8,12 @@ interface ToolbarProps {
 }
 
 const Toolbar: React.FC<ToolbarProps> = ({ query, onQueryChange }) => (
-  <div className="toolbar">
-    <form className="toolbar__search" onSubmit={(event) => event.preventDefault()}>
-      <span aria-hidden="true" className="toolbar__search-icon" />
+  <div className={styles.root}>
+    <form className={styles.search} onSubmit={(event) => event.preventDefault()}>
+      <span aria-hidden="true" className={styles.icon} />
 
       <input
-        className="toolbar__search-input"
+        className={styles.input}
         onChange={(event) => onQueryChange(event.target.value)}
         placeholder="Food"
         value={query}

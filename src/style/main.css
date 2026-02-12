@@ -3,7 +3,11 @@
   --container-width: 980px;
   --page-padding-x: 24px;
   --page-padding-x-mobile: 14px;
+
   --radius-pill: 999px;
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 16px;
   --color-header-bg: rgb(53, 52, 52);
   --color-footer-bg: rgb(53, 52, 52);
   --color-body-bg: #efefef;
@@ -11,6 +15,7 @@
   --color-text-muted: #eaeaea;
   --color-text-subtle: #cfcfcf;
   --color-text-soft: #a9a9a9;
+  --color-text-dark: #111827;
   --color-accent: #f17900;
   --color-footer-border: rgba(255, 255, 255, 0.08);
   --color-footer-social-bg: #3b3b3b;
@@ -18,6 +23,9 @@
   --color-footer-link: #cfcfcf;
   --color-footer-link-hover: #ffffff;
   --color-footer-section-title: #e0a449;
+
+  --shadow-strong: 0 24px 60px rgba(0, 0, 0, 0.25);
+  --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.25);
 }
 
 * {

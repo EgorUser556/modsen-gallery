@@ -1,5 +1,3 @@
-import './Header.css';
-
 import BurgerMenu from '@components/BurgerMenu/BurgerMenu';
 import Logo from '@components/Logo/Logo';
 import type { IconKey } from '@constants/icons';
@@ -8,32 +6,36 @@ import LINKS from '@constants/links';
 import React, { useState } from 'react';
 import { NavLink } from 'react-router-dom';
 
-const Header = () => {
+import styles from './Header.module.css';
+
+const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleToggleMenu = () => setIsMenuOpen((prev) => !prev);
   const handleCloseMenu = () => setIsMenuOpen(false);
 
   return (
-    <header className={`topbar ${isMenuOpen ? 'topbar--menu-open' : ''}`}>
-      <div className="topbar__inner">
+    <header className={`${styles.bar} ${isMenuOpen ? styles.menuOpen : ''}`}>
+      <div className={styles.inner}>
         <button
           aria-expanded={isMenuOpen}
           aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
-          className="topbar__burger"
+          className={styles.burger}
           onClick={handleToggleMenu}
           type="button"
         >
-          <span className="topbar__burgerLine" />
-          <span className="topbar__burgerLine" />
-          <span className="topbar__burgerLine" />
+          <span className={styles.burgerLine} />
+          <span className={styles.burgerLine} />
+          <span className={styles.burgerLine} />
         </button>
-        <Logo />
-        <nav className="topbar__nav">
+        <div className={styles.logo}>
+          <Logo />
+        </div>
+        <nav className={styles.nav}>
           {LINKS.map(({ to, label }) => (
             <NavLink
               key={to}
-              className={({ isActive }) => `topbar__link ${isActive ? 'is-active' : ''}`}
+              className={({ isActive }) => `${styles.link} ${isActive ? styles.active : ''}`}
               to={to}
             >
               {({ isActive }) => {
@@ -43,13 +45,12 @@ const Header = () => {
                 if (icons) {
                   src = isActive ? icons.active : icons.default;
                 }
-
                 return (
                   <React.Fragment>
                     {src ? (
-                      <img alt="" aria-hidden="true" className="topbar__linkIcon" src={src} />
+                      <img alt="" aria-hidden="true" className={styles.icon} src={src} />
                     ) : null}
-                    <span className="topbar__linkText">{label}</span>
+                    <span className={styles.text}>{label}</span>
                   </React.Fragment>
                 );
               }}
@@ -57,7 +58,6 @@ const Header = () => {
           ))}
         </nav>
       </div>
-
       <BurgerMenu isOpen={isMenuOpen} links={LINKS} onClose={handleCloseMenu} />
     </header>
   );

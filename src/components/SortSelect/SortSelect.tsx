@@ -1,20 +1,20 @@
-import './SortSelect.css';
-
 import React from 'react';
 
 import type { OrderBy } from '@/types/UnplashApiTypes';
+
+import styles from './SortSelect.module.css';
 
 interface SortSelectProps {
   value: OrderBy;
   onChange: (value: OrderBy) => void;
 }
 
-const SortSelect: React.FC<SortSelectProps> = ({ value, onChange }: SortSelectProps) => (
-  <div className="sort">
-    <span className="sort__label">Sort by</span>
-    <div className="sort__select-wrapper">
+const SortSelect: React.FC<SortSelectProps> = ({ value, onChange }) => (
+  <div className={styles.root}>
+    <span className={styles.label}>Sort by</span>
+    <div className={styles.wrap}>
       <select
-        className="sort__select"
+        className={styles.select}
         onChange={(event) => onChange(event.target.value as OrderBy)}
         value={value}
       >
